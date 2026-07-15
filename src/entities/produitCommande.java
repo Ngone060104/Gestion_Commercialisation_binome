@@ -35,6 +35,8 @@ public class ProduitCommande {
 
         public void toChaine() {
         System.out.println("id=" + this.id + ", quantite=" + this.quantite + ", prixS=" + this.prixS + ", produit=" + (this.produit != null ? this.produit.getLibelle() : "Aucun"));
+        //    System.out.println("id=" + this.id + ", quantite=" + this.quantite + ", prixS=" + this.prixS + ", produit=" + (this.produit != null ? this.produit.getLibelle() : "Aucun"));
+
     }
 
 }
