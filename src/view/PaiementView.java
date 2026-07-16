@@ -1,7 +1,7 @@
 package view;
 
 import entities.Facturation;
-import entities.paiement;
+import entities.Paiement;
 import service.FacturationService;
 import service.PaiementService;
 import java.util.Date;

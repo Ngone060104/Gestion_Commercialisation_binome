@@ -1,7 +1,7 @@
 package service;
 
 import entities.Facturation;
-import entities.paiement;
+import entities.Paiement;
 import repository.PaiementRepository;
 import java.util.ArrayList;
 import java.util.List;

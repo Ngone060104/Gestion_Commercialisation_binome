@@ -5,7 +5,7 @@ import java.util.Date;
 import enums.StatutPaiement;
 
 
-public class Paiement {
+public class Paiement{
     private int id;
     private String numero;
     private double montantVerse;

@@ -1,6 +1,6 @@
 package repository;
 
-import entities.paiement;
+import entities.Paiement;
 import java.util.ArrayList;
 import java.util.List;
 
