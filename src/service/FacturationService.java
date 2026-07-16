@@ -29,7 +29,7 @@ public class FacturationService {
     // Calcule dynamiquement le statut actuel d'une facture en fonction de ses versements
     public StatutPaiement calculerStatutFacture(Facturation facture) {
         double totalVerse = 0;
-        for (paiement p : facture.getPaiements()) {
+        for (Paiement p : facture.getPaiements()) {
             totalVerse += p.getMontantVerse();
         }
 

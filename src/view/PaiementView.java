@@ -19,9 +19,9 @@ public class PaiementView {
     }
 
     public void afficherMenu() {
-        System.out.println("\n--- GESTION DES PAIEMENTS ---");
-        System.out.println("1. Enregistrer un paiement pour une facture");
-        System.out.println("2. Afficher les paiements d'une facture");
+        System.out.println("\n--- GESTION DES PaiementS ---");
+        System.out.println("1. Enregistrer un Paiement pour une facture");
+        System.out.println("2. Afficher les Paiements d'une facture");
         System.out.print("Votre choix : ");
         int choix = scanner.nextInt();
         scanner.nextLine();
@@ -41,12 +41,12 @@ public class PaiementView {
                 return;
             }
 
-            System.out.print("Numéro de reçu de paiement : ");
+            System.out.print("Numéro de reçu de Paiement : ");
             String numP = scanner.nextLine();
             System.out.print("Montant versé : ");
             double montant = scanner.nextDouble();
 
-            paiement p = new paiement(0, numP, montant, new Date(), f);
+            Paiement p = new Paiement(0, numP, montant, new Date(), f);
             if (service.enregistrerPaiement(p)) {
                 System.out.println("Paiement enregistré ! Nouveau statut calculé pour la facture.");
             } else {
@@ -57,7 +57,7 @@ public class PaiementView {
             System.out.print("Entrez l'ID de la facture concernée : ");
             int idFact = scanner.nextInt();
             System.out.println("\nHistorique des règlements pour cette facture :");
-            for (paiement p : service.listerPaiementsParFacture(idFact)) {
+            for (Paiement p : service.listerPaiementsParFacture(idFact)) {
                 p.toChaine();
             }
         }

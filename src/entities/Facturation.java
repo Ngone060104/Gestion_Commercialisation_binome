@@ -10,10 +10,10 @@ public class Facturation {
     private Date date;
     private double montant;
     private Commande commande;
-    private List<paiement> paiements;
+    private List<Paiement> Paiements;
 
     public Facturation() {
-        this.paiements = new ArrayList<>();
+        this.Paiements = new ArrayList<>();
     }
 
     public Facturation(int id, String numero, Date date, Commande commande) {
@@ -22,7 +22,7 @@ public class Facturation {
         this.date = date;
         this.commande = commande;
         this.montant = commande.getMontantTotal();
-        this.paiements = new ArrayList<>();
+        this.Paiements = new ArrayList<>();
     }
 
     // Getters et Setters
@@ -41,8 +41,8 @@ public class Facturation {
     public Commande getCommande() { return commande; }
     public void setCommande(Commande commande) { this.commande = commande; }
 
-    public List<paiement> getPaiements() { return paiements; }
-    public void addPaiement(paiement p) { this.paiements.add(p); }
+    public List<Paiement> getPaiements() { return Paiements; }
+    public void addPaiement(Paiement p) { this.Paiements.add(p); }
 
     public void toChaine() {
         System.out.println("id=" + this.id + ", numero=" + this.numero + ", date=" + this.date + ", montant=" + this.montant + ", commande=" + (this.commande != null ? this.commande.getNumero() : "Aucune"));

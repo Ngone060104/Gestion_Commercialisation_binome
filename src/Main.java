@@ -14,7 +14,7 @@ public class Main {
         ProduitRepository produitRepo = new ProduitRepository();
         CommandeRepository commandeRepo = new CommandeRepository();
         FacturationRepository facturationRepo = new FacturationRepository();
-        PaiementRepository paiementRepo = new PaiementRepository();
+        PaiementRepository PaiementRepo = new PaiementRepository();
 
         // 3. Instanciation de la couche SERVICE (avec injection des repositories)
         CategorieProduitService categorieService = new CategorieProduitService(categorieRepo);
@@ -25,7 +25,7 @@ public class Main {
         // CommandeService a besoin de FacturationService pour la génération automatique
         CommandeService commandeService = new CommandeService(commandeRepo, facturationService);
         // PaiementService a besoin de FacturationService pour mettre à jour les statuts
-        PaiementService paiementService = new PaiementService(paiementRepo, facturationService);
+        PaiementService PaiementService = new PaiementService(PaiementRepo, facturationService);
 
         // 4. Instanciation de la couche VIEW (avec injection des services et du scanner)
         CategorieProduitView categorieView = new CategorieProduitView(categorieService, scanner);
@@ -33,7 +33,7 @@ public class Main {
         ProduitView produitView = new ProduitView(produitService, categorieService, scanner);
         CommandeView commandeView = new CommandeView(commandeService, clientService, produitService, scanner);
         FacturationView facturationView = new FacturationView(facturationService, scanner);
-        PaiementView paiementView = new PaiementView(paiementService, facturationService, scanner);
+        PaiementView PaiementView = new PaiementView(PaiementService, facturationService, scanner);
 
         // 5. Instanciation du Menu Principal et lancement de l'application
         MenuView menuPrincipal = new MenuView(
@@ -42,7 +42,7 @@ public class Main {
             produitView, 
             commandeView, 
             facturationView, 
-            paiementView, 
+            PaiementView, 
             scanner
         );
 

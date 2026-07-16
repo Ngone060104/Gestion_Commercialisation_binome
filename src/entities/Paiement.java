@@ -13,11 +13,11 @@ public class Paiement{
     private Facturation facture;
     private StatutPaiement statut;
 
-    public paiement() {
+    public Paiement() {
         this.statut = StatutPaiement.non_payee;
     }
 
-    public paiement(int id, String numero, double montantVerse, Date date, Facturation facture) {
+    public Paiement(int id, String numero, double montantVerse, Date date, Facturation facture) {
         this.id = id;
         this.numero = numero;
         this.montantVerse = montantVerse;
