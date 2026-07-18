@@ -7,6 +7,12 @@ import java.util.List;
 public class ProduitService {
     private ProduitRepository repository;
 
+    // Constructeur sans paramètre
+    public ProduitService() {
+        this.repository = new ProduitRepository();
+    }
+
+    // Pour injection (si besoin)
     public ProduitService(ProduitRepository repository) {
         this.repository = repository;
     }
@@ -23,16 +29,14 @@ public class ProduitService {
         return repository.findById(id);
     }
 
-    // BONUS : Recherche d'un produit par son libellé
     public Produit rechercherParLibelle(String libelle) {
         return repository.findByLibelle(libelle);
     }
 
-    // BONUS & EXIGENCE : Mettre à jour la quantité en stock d'un produit
     public boolean modifierQuantiteStock(int id, int nouvelleQte) {
         Produit p = repository.findById(id);
         if (p != null && nouvelleQte >= 0) {
-            p.setQteStock(nouvelleQte); // Le setter gère automatiquement le statut disponible/rupture
+            p.setQteStock(nouvelleQte);
             return true;
         }
         return false;

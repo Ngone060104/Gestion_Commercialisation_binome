@@ -7,6 +7,12 @@ import java.util.List;
 public class CategorieProduitService {
     private CategorieProduitRepository repository;
 
+    //  Constructeur sans paramètre
+    public CategorieProduitService() {
+        this.repository = new CategorieProduitRepository();
+    }
+
+    //  Pour injection (si besoin)
     public CategorieProduitService(CategorieProduitRepository repository) {
         this.repository = repository;
     }

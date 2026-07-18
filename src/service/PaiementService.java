@@ -7,33 +7,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PaiementService {
-    private PaiementRepository PaiementRepository;
+    private PaiementRepository paiementRepository;
     private FacturationService facturationService;
 
-    public PaiementService(PaiementRepository PaiementRepository, FacturationService facturationService) {
-        this.PaiementRepository = PaiementRepository;
+    // Constructeur sans paramètre
+    public PaiementService() {
+        this.paiementRepository = new PaiementRepository();
+        this.facturationService = new FacturationService();
+    }
+
+    //  Pour injection (si besoin)
+    public PaiementService(PaiementRepository paiementRepository, FacturationService facturationService) {
+        this.paiementRepository = paiementRepository;
         this.facturationService = facturationService;
     }
 
-    // EXIGENCE : Enregistrer un Paiement et mettre à jour le statut de la facture liée
     public boolean enregistrerPaiement(Paiement p) {
         Facturation facture = p.getFacture();
         if (facture == null) return false;
 
-        // On enregistre le Paiement dans la facture et dans le dépôt
         facture.addPaiement(p);
-        PaiementRepository.save(p);
-
-        // On rafraîchit le statut de Paiement basé sur la logique métier
+        paiementRepository.save(p);
         p.setStatut(facturationService.calculerStatutFacture(facture));
         return true;
     }
 
     public List<Paiement> listerTousLesPaiements() {
-        return PaiementRepository.findAll();
+        return paiementRepository.findAll();
     }
 
-    // EXIGENCE : Afficher les Paiements d'une facture spécifique
     public List<Paiement> listerPaiementsParFacture(int idFacture) {
         List<Paiement> resultat = new ArrayList<>();
         Facturation f = facturationService.rechercherParId(idFacture);
