@@ -10,6 +10,12 @@ import java.util.List;
 public class FacturationService {
     private FacturationRepository repository;
 
+    // Constructeur sans paramètre
+    public FacturationService() {
+        this.repository = new FacturationRepository();
+    }
+
+    // Pour injection (si besoin)
     public FacturationService(FacturationRepository repository) {
         this.repository = repository;
     }
@@ -26,7 +32,6 @@ public class FacturationService {
         return repository.findById(id);
     }
 
-    // Calcule dynamiquement le statut actuel d'une facture en fonction de ses versements
     public StatutPaiement calculerStatutFacture(Facturation facture) {
         double totalVerse = 0;
         for (Paiement p : facture.getPaiements()) {
@@ -42,7 +47,6 @@ public class FacturationService {
         }
     }
 
-    // BONUS : Afficher les factures impayées (non payées ou partiellement payées)
     public List<Facturation> listerFacturesImpayees() {
         List<Facturation> impayees = new ArrayList<>();
         for (Facturation f : repository.findAll()) {
@@ -54,7 +58,6 @@ public class FacturationService {
         return impayees;
     }
 
-    // EXIGENCE : Afficher les factures soldées (totalement payées)
     public List<Facturation> listerFacturesSoldees() {
         List<Facturation> soldees = new ArrayList<>();
         for (Facturation f : repository.findAll()) {
