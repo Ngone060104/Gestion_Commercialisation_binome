@@ -1,6 +1,6 @@
 package entities;
 
-public class ProduitCommande{
+public class ProduitCommande {
     private int id;
     private int quantite;
     private double prixS; // Prix de saisie au moment de la commande
